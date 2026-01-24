@@ -7,13 +7,16 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ProductService
 {
-    public function paginate(string $search = ""): LengthAwarePaginator
+    public function paginate(string $search = null): LengthAwarePaginator
     {
         return Product::when($search, function ($query) use ($search) {
-                $query->where('name', 'ilike', "%{$search}%");
-            })
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+                    $query->whereRaw(
+                        "unaccent(name) ILIKE unaccent(?)",
+                        ["%{$search}%"]
+                    );
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
     }
 
     public function create(array $data): Product

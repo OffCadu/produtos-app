@@ -5,15 +5,19 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+                    <div class="text-grey">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0l-8 5-8-5m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5" />
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                        Produtos
                     </x-nav-link>
                 </div>
             </div>
