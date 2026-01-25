@@ -15,10 +15,10 @@ class ProductController extends Controller
         private ProductService $service
     ) {}
 
-public function index()
-{
-    return view('products.index');
-}
+    public function index()
+    {
+        return view('products.index');
+    }
 
     public function create()
     {

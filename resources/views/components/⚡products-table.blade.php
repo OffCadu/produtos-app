@@ -45,7 +45,7 @@ new class extends Component
         return [
             'products' => Product::query()
                 ->when($this->search !== '', function ($q) {
-                    $q->whereRaw("unaccent(name) ILIKE unaccent(?)", ['%' . $this->search . '%']);
+                    $q->where('name', 'ilike', '%' . $this->search . '%');
                 })
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(10),
