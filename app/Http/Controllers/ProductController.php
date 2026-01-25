@@ -15,11 +15,10 @@ class ProductController extends Controller
         private ProductService $service
     ) {}
 
-    public function index(Request $request)
-    {
-        $products = $this->service->paginate($request->get('search'));
-        return view('products.index', compact('products'));
-    }
+public function index()
+{
+    return view('products.index');
+}
 
     public function create()
     {
